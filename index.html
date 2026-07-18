@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arogya AI — Assisting doctors through the consultation</title>
 <meta name="description" content="Arogya AI brings everything a doctor needs into one place, supporting them seamlessly through the entire consultation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:ital,wght@0,400;0,500;0,600;0,700&amp;family=Syne:wght@700;800&amp;display=swap" rel="stylesheet">
 <style>
   /* ============ Design tokens ============ */
   :root{
@@ -170,12 +169,14 @@
   .paths{
     position:relative;
     padding: 90px 0;
-    overflow: hidden;
   }
   .paths__bg{
     position:absolute;
-    top:-14%; left:-14%;
-    width:130%; height:132%;
+    top:-14%;
+    left:50%;
+    width:100vw;
+    height:132%;
+    transform: translateX(-50%);
     background-repeat:no-repeat;
     background-position: center top;
     background-size: cover;
@@ -397,12 +398,14 @@
   .showcase{
     position:relative;
     padding: 140px 0 69px;
-    overflow:hidden;
   }
   .showcase__bg{
     position:absolute;
-    top:-6%; left:-24%;
-    width:150%; height:118%;
+    top:-6%;
+    left:50%;
+    width:100vw;
+    height:118%;
+    transform: translateX(-50%);
     background-repeat:no-repeat;
     background-position: center top;
     background-size: contain;
@@ -531,15 +534,27 @@
   }
   .field-card__media{
     flex:1;
+    position:relative;
+    overflow:hidden;
     background:
       repeating-linear-gradient(135deg, rgba(96,165,250,0.16) 0 2px, transparent 2px 14px),
       linear-gradient(135deg, rgba(96,165,250,0.30), var(--bg));
-    display:flex; align-items:center; justify-content:center;
+  }
+  .field-card__media img{
+    position:absolute;
+    width:100%; height:100%; object-fit:cover;
+    display:block; /* shown by JS once the file successfully loads */
+  }
+  .field-card__placeholder{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center; flex-direction:column;
     color: rgba(0,0,0,0.45);
     gap:8px;
+    text-align:center;
+    padding: 0 16px;
   }
-  .field-card__media svg{ width:28px; height:28px; opacity:.55; }
-  .field-card__media span{ font-size:12px; letter-spacing:.04em; text-transform:uppercase; }
+  .field-card__placeholder svg{ width:28px; height:28px; opacity:.55; }
+  .field-card__placeholder span{ font-size:12px; letter-spacing:.04em; text-transform:uppercase; }
   .field-card__caption{
     background: var(--card-bg);
     padding: 10px 28px;
@@ -620,7 +635,9 @@
   <main id="main">
 
     <!-- ============ HERO ============ -->
-    <section class="hero reveal">
+    <section class="hero reveal is-visible" style="
+    padding: 120px 0;
+">
       <div class="hero__text">
         <h1>Assisting doctors through the consultation.</h1>
         <p>Arogya AI brings everything a doctor needs into one place, supporting them seamlessly through the entire consultation.</p>
@@ -631,18 +648,20 @@
     </section>
 
     <!-- ============ FOLLOWS EVERY PATH ============ -->
-    <section class="paths" id="paths">
-      <div class="paths__bg" style="background-image:url('https://www.figma.com/api/mcp/asset/c6f88133-b011-4eb3-ad19-b17a93c37242')" aria-hidden="true"></div>
+    <section class="paths" id="paths" style="
+    margin-top: 120px;
+">
+      <div class="paths__bg" style="background-image:url('https://www.figma.com/api/mcp/asset/c6f88133-b011-4eb3-ad19-b17a93c37242');/* transform: scaleX(1.5); */transform: translate(-1003px, 0px) scaleX(1.15);" aria-hidden="true"></div>
       <div class="paths__inner">
-        <div class="paths__header reveal">
+        <div class="paths__header reveal is-visible">
           <h2>Follows every path in the consultation</h2>
           <p>Arogya Ai is built considering the workflow of professional doctors on the line. There feedback continously enables us to refine the capabilities of Arogya AI to enhance the maximum productivity of every single doctor.</p>
         </div>
 
-        <div class="feature-row reveal">
+        <div class="feature-row reveal is-visible">
           <div class="feature-card">
-            <div class="feature-card__frame">
-              <img src="https://www.figma.com/api/mcp/asset/076aa99e-bc25-4efc-9e33-2019a08f366c" alt="Arogya AI screen showing a patient's case summary" loading="lazy">
+            <div class="feature-card__frame" style="background: linear-gradient(135deg, rgba(96, 165, 250, 0.35), rgb(235, 248, 255)); display: flex; align-items: center; justify-content: center;">
+              <img src="images/screenshot1.png" alt="Arogya AI screen showing a patient's case summary" loading="lazy" style="display: block;">
             </div>
             <div class="feature-card__overlay" aria-hidden="true">
               <img src="https://www.figma.com/api/mcp/asset/ef35e95c-6b72-4de9-8dfd-45780aab8703" alt="">
@@ -654,14 +673,14 @@
           </div>
         </div>
 
-        <div class="feature-row reveal">
+        <div class="feature-row reveal is-visible">
           <div class="feature-content">
             <h3>Support the diagnosis</h3>
             <p>Reason through the case, explore possible diagnoses, and find relevant research and clinical information to support the decision.</p>
           </div>
           <div class="feature-card">
-            <div class="feature-card__frame">
-              <img src="https://www.figma.com/api/mcp/asset/076aa99e-bc25-4efc-9e33-2019a08f366c" alt="Arogya AI screen supporting a clinical diagnosis" loading="lazy">
+            <div class="feature-card__frame" style="background: linear-gradient(135deg, rgba(96, 165, 250, 0.35), rgb(235, 248, 255)); display: flex; align-items: center; justify-content: center;">
+              <img src="images/ss2.png" alt="Arogya AI screen supporting a clinical diagnosis" loading="lazy" style="display: block">
             </div>
             <div class="feature-card__overlay feature-card__overlay--rotate" aria-hidden="true">
               <img src="https://www.figma.com/api/mcp/asset/2a971407-6cc8-4f5e-aede-6f50f45ffd23" alt="">
@@ -669,10 +688,10 @@
           </div>
         </div>
 
-        <div class="feature-row reveal">
+        <div class="feature-row reveal is-visible">
           <div class="feature-card">
-            <div class="feature-card__frame">
-              <img src="https://www.figma.com/api/mcp/asset/076aa99e-bc25-4efc-9e33-2019a08f366c" alt="Arogya AI screen preparing prescriptions and follow-ups" loading="lazy">
+            <div class="feature-card__frame" style="background: linear-gradient(135deg, rgba(96, 165, 250, 0.35), rgb(235, 248, 255)); display: flex; align-items: center; justify-content: center;">
+              <img src="images/ss3.png" alt="Arogya AI screen preparing prescriptions and follow-ups" loading="lazy" style="display: block;">
             </div>
             <div class="feature-card__overlay" aria-hidden="true">
               <img src="https://www.figma.com/api/mcp/asset/ef35e95c-6b72-4de9-8dfd-45780aab8703" alt="">
@@ -687,20 +706,24 @@
     </section>
 
     <!-- ============ HOW IT WORKS / VIDEO ============ -->
-    <section class="how" id="how-it-works">
+    <section class="how" id="how-it-works" style="
+    margin-top: 200px;
+">
       <div class="how__bg" style="background-image:url('https://www.figma.com/api/mcp/asset/c6c37362-190c-42a6-bf42-0d74d2f12e70')" aria-hidden="true"></div>
       <div class="how__content">
-        <div class="how__header reveal">
+        <div class="how__header reveal is-visible">
           <h2>How it works</h2>
           <p>Watch the video demonstration of Arogya Ai</p>
         </div>
 
-        <div class="video-player reveal">
+        <div class="video-player reveal is-visible">
           <div class="video-stage" id="videoStage">
-            <video id="demoVideo" preload="metadata" playsinline>
+            <video id="demoVideo" preload="metadata" playsinline="">
               <!-- Placeholder: no source file was provided in the design.
                    Add a real demo clip here, e.g.:
-                   <source src="/media/arogya-ai-demo.mp4" type="video/mp4"> -->
+                    -->
+                <source src="video.mp4" type="video/mp4">
+                
             </video>
 
             <button class="video-play-btn" id="videoPlayBtn" aria-label="Play demo video">
@@ -709,19 +732,19 @@
 
             <div class="video-controls">
               <button class="ctrl-btn" id="ctrlPlayPause" aria-label="Play or pause">
-                <svg class="icon icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M3 1.7c0-.9 1-1.4 1.7-.9l9.6 6.3c.6.4.6 1.4 0 1.8l-9.6 6.3c-.7.5-1.7 0-1.7-.9V1.7Z"/></svg>
-                <svg class="icon icon-pause" viewBox="0 0 16 16" fill="currentColor"><rect x="2.5" y="1.5" width="4" height="13" rx="1"/><rect x="9.5" y="1.5" width="4" height="13" rx="1"/></svg>
+                <svg class="icon icon-play" viewBox="0 0 16 16" fill="currentColor"><path d="M3 1.7c0-.9 1-1.4 1.7-.9l9.6 6.3c.6.4.6 1.4 0 1.8l-9.6 6.3c-.7.5-1.7 0-1.7-.9V1.7Z"></path></svg>
+                <svg class="icon icon-pause" viewBox="0 0 16 16" fill="currentColor"><rect x="2.5" y="1.5" width="4" height="13" rx="1"></rect><rect x="9.5" y="1.5" width="4" height="13" rx="1"></rect></svg>
               </button>
               <div class="video-progress" id="videoProgress" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
                 <div class="video-progress-fill" id="videoProgressFill"></div>
               </div>
               <span class="video-time" id="videoTime">0:00 / 0:00</span>
               <button class="ctrl-btn" id="ctrlMute" aria-label="Mute or unmute">
-                <svg class="icon icon-unmute" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5 4 5H1v6h3l4 3.5v-13Z"/><path d="M11 5.5c.9.9.9 4.1 0 5" stroke="currentColor" fill="none" stroke-width="1.3" stroke-linecap="round"/></svg>
-                <svg class="icon icon-mute" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5 4 5H1v6h3l4 3.5v-13Z"/><path d="M11 6l3 3M14 6l-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                <svg class="icon icon-unmute" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5 4 5H1v6h3l4 3.5v-13Z"></path><path d="M11 5.5c.9.9.9 4.1 0 5" stroke="currentColor" fill="none" stroke-width="1.3" stroke-linecap="round"></path></svg>
+                <svg class="icon icon-mute" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5 4 5H1v6h3l4 3.5v-13Z"></path><path d="M11 6l3 3M14 6l-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path></svg>
               </button>
               <button class="ctrl-btn" id="ctrlFullscreen" aria-label="Fullscreen">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 5.5V1.5h4M15 5.5V1.5h-4M1 10.5v4h4M15 10.5v4h-4"/></svg>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 5.5V1.5h4M15 5.5V1.5h-4M1 10.5v4h4M15 10.5v4h-4"></path></svg>
               </button>
             </div>
 
@@ -732,11 +755,13 @@
     </section>
 
     <!-- ============ SHOWCASE: Recognitions / Validation / Field ============ -->
-    <section class="showcase">
-      <div class="showcase__bg" style="background-image:url('https://www.figma.com/api/mcp/asset/439c9924-2dd9-46f5-8a4a-85e4524080db')" aria-hidden="true"></div>
+    <section class="showcase" style="
+    margin-top: 260px;
+">
+      <div class="showcase__bg" style="background-image:url('https://www.figma.com/api/mcp/asset/439c9924-2dd9-46f5-8a4a-85e4524080db');transform: scaleX(1.3) translate(-733px,0px);" aria-hidden="true"></div>
       <div class="showcase__inner">
 
-        <div id="recognitions" class="reveal">
+        <div id="recognitions" class="reveal is-visible">
           <p class="eyebrow">Recognitions</p>
           <div class="block-header">
             <h2>India AI Impact <span class="accent">Summit 2026</span></h2>
@@ -755,7 +780,7 @@
           </div>
         </div>
 
-        <div id="validation" class="reveal">
+        <div id="validation" class="reveal is-visible">
           <p class="eyebrow">Doctor's Validation</p>
           <div class="block-header">
             <h2>Endorsement <span class="accent">Letters</span></h2>
@@ -786,15 +811,18 @@
           </div>
         </div>
 
-        <div id="field" class="reveal">
+        <div id="field" class="reveal is-visible">
           <div class="block-header">
             <h2>ArogyaAI <span class="accent">in</span> <span class="accent">Field</span></h2>
           </div>
           <div class="field-row">
             <div class="field-card">
               <div class="field-card__media">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M2 17l5-5 4 4 3-3 8 6"/></svg>
-                <span>Photo placeholder</span>
+                <img src="/images/field-photo-1.jpg" alt="A rural general physician using ArogyaAI during an actual consultation" loading="lazy">
+                <div class="field-card__placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="4" width="20" height="16" rx="2"></rect><circle cx="8" cy="10" r="2"></circle><path d="M2 17l5-5 4 4 3-3 8 6"></path></svg>
+                  <span>Add images/field-photo-1.jpg</span>
+                </div>
               </div>
               <div class="field-card__caption">
                 <p>A rural general physician using ArogyaAI during an actual consultation, reviewing the model's clinical reasoning output alongside the patient.</p>
@@ -802,8 +830,11 @@
             </div>
             <div class="field-card">
               <div class="field-card__media">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M2 17l5-5 4 4 3-3 8 6"/></svg>
-                <span>Photo placeholder</span>
+                <img src="images/field-photo-2.jpg" alt="A physician testing the ArogyaAI prototype at their clinic desk" loading="lazy">
+                <div class="field-card__placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="4" width="20" height="16" rx="2"></rect><circle cx="8" cy="10" r="2"></circle><path d="M2 17l5-5 4 4 3-3 8 6"></path></svg>
+                  <span>Add images/field-photo-2.jpg</span>
+                </div>
               </div>
               <div class="field-card__caption">
                 <p>A physician testing the ArogyaAI prototype at their clinic desk, evaluating its diagnostic support output in a live practice setting.</p>
@@ -818,7 +849,10 @@
   </main>
 </div>
 
-<footer class="site-footer" id="contact">
+<footer class="site-footer" id="contact" style="
+    z-index: 5;
+    position: relative;
+">
   <p class="site-footer__brand">Arogya AI</p>
   <nav class="site-footer__links" aria-label="Footer">
     <a href="#paths">Products</a>
@@ -846,6 +880,22 @@
   } else {
     revealEls.forEach(function(el){ el.classList.add('is-visible'); });
   }
+
+  /* ============ Field photos: drop a file named exactly as below into /images
+     and it appears automatically — no code changes needed.
+       images/field-photo-1.jpg
+       images/field-photo-2.jpg
+     Until a file is present (or if it fails to load), the placeholder stays visible. */
+  document.querySelectorAll('.field-card__media img').forEach(function(img){
+    function reveal(){
+      img.style.display = 'block';
+      var placeholder = img.parentElement.querySelector('.field-card__placeholder');
+      if(placeholder){ placeholder.style.display = 'none'; }
+    }
+    if(img.complete && img.naturalWidth > 0){ reveal(); }
+    img.addEventListener('load', reveal);
+    img.addEventListener('error', function(){ img.style.display = 'none'; });
+  });
 
   /* Image fallback: if a Figma asset URL has expired, degrade gracefully instead of a broken icon */
   document.querySelectorAll('img').forEach(function(img){
@@ -936,5 +986,43 @@
   }
 })();
 </script>
-</body>
-</html>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
